@@ -13,6 +13,7 @@ import (
 	"github.com/k3s-io/kine/pkg/drivers/nats"
 	"github.com/k3s-io/kine/pkg/drivers/pgsql"
 	"github.com/k3s-io/kine/pkg/drivers/sqlite"
+	"github.com/k3s-io/kine/pkg/drivers/ydb"
 	"github.com/k3s-io/kine/pkg/metrics"
 	"github.com/k3s-io/kine/pkg/server"
 	"github.com/k3s-io/kine/pkg/tls"
@@ -35,6 +36,7 @@ const (
 	NATSBackend      = "nats"
 	MySQLBackend     = "mysql"
 	PostgresBackend  = "postgres"
+	YDBBackend       = "ydb"
 )
 
 type Config struct {
@@ -251,6 +253,8 @@ func getKineStorageBackend(ctx context.Context, driver, dsn string, cfg Config) 
 		backend, err = nats.NewLegacy(ctx, dsn, cfg.BackendTLSConfig)
 	case NATSBackend:
 		backend, err = nats.New(ctx, dsn, cfg.BackendTLSConfig)
+	case YDBBackend:
+		backend, err = ydb.New(ctx, dsn, cfg.BackendTLSConfig, cfg.ConnectionPoolConfig, cfg.MetricsRegisterer)
 	default:
 		return false, nil, fmt.Errorf("storage backend is not defined")
 	}
