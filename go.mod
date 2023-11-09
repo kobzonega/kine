@@ -21,6 +21,7 @@ require (
 	github.com/soheilhy/cmux v0.1.5
 	github.com/urfave/cli v1.22.4
 	github.com/ydb-platform/ydb-go-genproto v0.0.0-20231012155159-f85a672542fd
+	github.com/ydb-platform/ydb-go-sdk-auth-environ v0.2.0
 	go.etcd.io/etcd/api/v3 v3.5.9
 	go.etcd.io/etcd/client/pkg/v3 v3.5.9
 	go.etcd.io/etcd/client/v3 v3.5.9
@@ -29,7 +30,11 @@ require (
 )
 
 require (
+	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/google/uuid v1.3.0 // indirect
+	github.com/yandex-cloud/go-genproto v0.0.0-20211115083454-9ca41db5ed9e // indirect
+	github.com/ydb-platform/ydb-go-yc v0.10.2 // indirect
+	github.com/ydb-platform/ydb-go-yc-metadata v0.5.2 // indirect
 	golang.org/x/sync v0.1.0 // indirect
 )
 
